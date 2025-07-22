@@ -75,7 +75,7 @@ local function remove_dir(cwd)
 
     if type == "directory" then
       local success = remove_dir(new_cwd)
-      -- print("removing" .. name, new_cwd, success)
+      print("tried to remove" .. name, new_cwd, success)
       if not success then
         return false
       end
