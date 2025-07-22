@@ -98,7 +98,7 @@ function M.remove(node)
   if node:is(DirectoryNode) and not node:is(DirectoryLinkNode) then
     local success = remove_dir(node.absolute_path)
     if not success then
-      notify.error("Could not remove " .. notify_node)
+      -- notify.error("Could not remove " .. notify_node)
       return
     end
     events._dispatch_folder_removed(node.absolute_path)
