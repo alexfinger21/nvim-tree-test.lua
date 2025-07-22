@@ -76,9 +76,8 @@ local function remove_dir(cwd)
     local type = stat and stat.type or nil
     local ltype = lstat and lstat.type or nil
 
-    if type == "directory" then
+    if type == "directory" and not ltype == "link" then
       local success = remove_dir(new_cwd)
-      print("tried to remove" .. name, new_cwd, success, type, ltype)
       if not success then
         return false
       end
