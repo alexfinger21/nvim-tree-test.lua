@@ -95,7 +95,7 @@ end
 function M.remove(node)
   local notify_node = notify.render_path(node.absolute_path)
   if node:is(DirectoryNode) and not node:is(DirectoryLinkNode) then
-    print("tryna remove")
+    print(node.absolute_path)
     local success = remove_dir(node.absolute_path)
     if not success then
       -- notify.error("Could not remove " .. notify_node)
