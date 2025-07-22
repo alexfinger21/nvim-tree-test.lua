@@ -68,7 +68,6 @@ local function remove_dir(cwd)
     end
 
     local new_cwd = utils.path_join({ cwd, name })
-    print(name, new_cwd)
 
     -- Type must come from fs_stat and not fs_scandir_next to maintain sshfs compatibility
     local stat = vim.loop.fs_stat(new_cwd)
@@ -76,6 +75,7 @@ local function remove_dir(cwd)
 
     if type == "directory" then
       local success = remove_dir(new_cwd)
+      print("removing" .. name, new_cwd)
       if not success then
         return false
       end
