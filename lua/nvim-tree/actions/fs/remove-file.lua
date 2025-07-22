@@ -66,9 +66,9 @@ local function remove_dir(cwd)
     if not name then
       break
     end
-    print(handle)
 
     local new_cwd = utils.path_join({ cwd, name })
+    print(name, new_cwd)
 
     -- Type must come from fs_stat and not fs_scandir_next to maintain sshfs compatibility
     local stat = vim.loop.fs_stat(new_cwd)
