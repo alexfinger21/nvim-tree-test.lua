@@ -71,11 +71,14 @@ local function remove_dir(cwd)
 
     -- Type must come from fs_stat and not fs_scandir_next to maintain sshfs compatibility
     local stat = vim.loop.fs_stat(new_cwd)
+    local lstat = vim.loop.fs_lstat(new_cwd)
+
     local type = stat and stat.type or nil
+    local ltype = lstat and lstat.type or nil
 
     if type == "directory" then
       local success = remove_dir(new_cwd)
-      print("tried to remove" .. name, new_cwd, success, type)
+      print("tried to remove" .. name, new_cwd, success, type, ltype)
       if not success then
         return false
       end
